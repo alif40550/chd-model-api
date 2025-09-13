@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 
 import numpy as np
 import onnxruntime as ort
-import google.generativeai as genai
 import os
 import json
 
@@ -23,9 +22,6 @@ scaler_scale = np.array(scaler_params["scale"])
 
 def scale_features(features):
     return (features - scaler_mean) / scaler_scale
-
-# Configure Gemini
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # FastAPI app
 app = FastAPI()
